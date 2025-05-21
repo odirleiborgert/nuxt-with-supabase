@@ -115,16 +115,16 @@ myChannel.on(
 /**
  * Sending a message after subscribing will use Websockets
  */
-// myChannel.subscribe((status) => {
-//     if (status !== 'SUBSCRIBED') {
-//         return null
-//     }
-//     myChannel.send({
-//         type: 'broadcast',
-//         event: 'shout',
-//         payload: { message: 'Hi' },
-//     })
-// })
+myChannel.subscribe((status) => {
+    if (status !== 'SUBSCRIBED') {
+        return null
+    }
+    myChannel.send({
+        type: 'broadcast',
+        event: 'shout',
+        payload: { message: 'Hi' },
+    })
+})
 
 onMounted(() => {
     getInstruments()
