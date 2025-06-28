@@ -24,10 +24,10 @@ onMounted(async () => {
 
 <template>
     <div>
-        <span v-if="loading" class="text-[12px] text-green-700">Load caregories...</span>
+        <span v-if="loading" class="text-[12px] text-green-700">Load categories...</span>
         
         <ul class="list-disc mb-2">
-            <li v-for="category in categories" :key="category.id" class="gap-2 flex items-center justify-between mb-1 hover:bg-green-50 py-1">
+            <li v-for="category in categories" :key="category.id" class="gap-2 flex items-center justify-between mb-1 py-1">
                 <div>
                     <a href="javascript:;" @click="filterTecnologies(category.id, category.name)" class="underline font-bold">{{ category.name }}</a> ({{ category.tecnologies[0]?.count || 0 }})
                 </div>
