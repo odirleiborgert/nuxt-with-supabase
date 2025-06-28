@@ -8,12 +8,8 @@ const { tecnologies, fetchTecnologies, loading } = tecnologiesStore
 const categoryId = Number(route.params.id)
 const categoryName = route.query.name as string || ''
 
-const filteredTecnologies = computed(() =>
-    tecnologies.value.filter(t => t.category_id === categoryId)
-)
-
 onMounted(async () => {
-    await fetchTecnologies()
+    await fetchTecnologies(categoryId)
 })
 
 </script>
@@ -23,7 +19,7 @@ onMounted(async () => {
         
         <h1 class="mb-4 text-[22px] font-bold" v-if="categoryName">{{ categoryName }}</h1>
         
-        <div v-for="tecnology in filteredTecnologies" class="bg-white mt-6 p-4 rounded-[4px] flex items-center justify-between gap-3">
+        <div v-for="tecnology in tecnologies" class="bg-white mt-6 p-4 rounded-[4px] flex items-center justify-between gap-3">
             <div>
                 <span class="bg-green-500 text-white text-[11px] px-2 py-1 rounded absolute mt-[-28px]">{{ tecnology.category.name }}</span>
                 <a v-if="tecnology.url" :href="tecnology.url" class="font-bold block underline flex items-center gap-1" target="_blank" rel="noopener noreferrer">
@@ -43,7 +39,7 @@ onMounted(async () => {
             Await... Load tecnologies...
         </div>
         
-        <div v-if="filteredTecnologies.length === 0 && !loading" class="flex justify-center items-center">
+        <div v-if="tecnologies.length === 0 && !loading" class="flex justify-center items-center">
             <p class="text-gray-500">Tecnology not found.</p>
         </div>
         

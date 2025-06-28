@@ -20,12 +20,19 @@ export const useTecnologies = () => {
     const form = ref<Category>(defaultTecnology())
     const categoryName = ref<string>('')
 
-    const fetchTecnologies = async () => {
+    const fetchTecnologies = async (categoryId?: number) => {
         loading.value = true
+        console.log('fazer fetchTecnologies')
 
-        const { data, error: fetchError } = await client
+        let query = client
             .from('tecnologies')
             .select('*, category:categories(*)')
+
+        if (categoryId) {
+            query = query.eq('category_id', categoryId)
+        }
+
+        const { data, error: fetchError } = await query
 
         if (fetchError) {
             // toast.add({ title: 'Erro', description: fetchError.message || 'Não foi possível cadastrar a categoria', color: 'error' })
