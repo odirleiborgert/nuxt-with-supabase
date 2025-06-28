@@ -59,6 +59,8 @@ export const useCategories = () => {
 
         loading.value = true
 
+        delete category.tecnologies
+
         const { error: updateError } = await client
             .from('categories')
             .update(category)
