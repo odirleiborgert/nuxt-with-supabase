@@ -31,7 +31,7 @@ onMounted(async () => {
             </div>
             <div class="flex items-center gap-1">
                 <UButton @click="openForm(tecnology)" icon="i-lucide-edit" color="info" variant="outline"></UButton>
-                <UButton @click="deleteTecnology(tecnology.id)" icon="i-lucide-trash-2" color="error" variant="outline"></UButton>
+                <UButton @click="deleteTecnology(tecnology.id, categoryId)" icon="i-lucide-trash-2" color="error" variant="outline"></UButton>
             </div>
         </div>
         

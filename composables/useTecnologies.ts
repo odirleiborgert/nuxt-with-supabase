@@ -22,7 +22,6 @@ export const useTecnologies = () => {
 
     const fetchTecnologies = async (categoryId?: number) => {
         loading.value = true
-        console.log('fazer fetchTecnologies')
 
         let query = client
             .from('tecnologies')
@@ -62,7 +61,7 @@ export const useTecnologies = () => {
 
         open.value = false
 
-        await fetchTecnologies()
+        await fetchTecnologies(tecnology.category_id)
         await fetchCategories()
     }
 
@@ -89,11 +88,11 @@ export const useTecnologies = () => {
 
         open.value = false
 
-        await fetchTecnologies()
+        await fetchTecnologies(tecnology.category_id)
         await fetchCategories()
     }
 
-    const deleteTecnology = async (id: number) => {
+    const deleteTecnology = async (id: number, categoryId: number) => {
         const { error: deleteError } = await client
             .from('tecnologies')
             .delete()
@@ -106,7 +105,7 @@ export const useTecnologies = () => {
 
         // toast.add({ title: 'Tecnologia deletada', description: `Tecnologia deletada com sucesso`, color: 'primary'})
 
-        await fetchTecnologies()
+        await fetchTecnologies(categoryId)
         await fetchCategories()
     }
 
