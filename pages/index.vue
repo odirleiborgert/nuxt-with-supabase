@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2 class="text-xl font-bold mb-4">Bem-vindo ao Directory!</h2>
-        <p>Selecione uma categoria para ver as tecnologias.</p>
+        <h2 class="text-xl font-bold mb-4">Welcome to the Directory!</h2>
+        <p>Select a category to view technologies.</p>
     </div>
 </template>
