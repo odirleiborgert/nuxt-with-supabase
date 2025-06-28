@@ -6,9 +6,11 @@ import type { Tecnology } from '~/types/tecnology'
 import { defaultTecnology } from '~/types/tecnology'
 import { useSupabaseClient } from '~/composables/useSupabaseClient'
 import {type Category } from "~/types/category"
+import { categoriesStore } from  "~/composables/useCategories"
+
+const { fetchCategories } = categoriesStore
 
 // const toast = useToast()
-const UButton = resolveComponent('UButton')
 
 export const useTecnologies = () => {
     const client = useSupabaseClient()
@@ -54,6 +56,7 @@ export const useTecnologies = () => {
         open.value = false
 
         await fetchTecnologies()
+        await fetchCategories()
     }
 
     const updateTecnology = async (id: number, tecnology: Partial<Tecnology>) => {
@@ -80,6 +83,7 @@ export const useTecnologies = () => {
         open.value = false
 
         await fetchTecnologies()
+        await fetchCategories()
     }
 
     const deleteTecnology = async (id: number) => {
@@ -96,6 +100,7 @@ export const useTecnologies = () => {
         // toast.add({ title: 'Tecnologia deletada', description: `Tecnologia deletada com sucesso`, color: 'primary'})
 
         await fetchTecnologies()
+        await fetchCategories()
     }
 
     const openForm = (tecnology?: Tecnology) => {
