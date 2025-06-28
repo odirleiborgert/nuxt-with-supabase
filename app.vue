@@ -14,7 +14,9 @@
                         <div class="mx-auto max-w-screen-2xl">
                             <header class="flex items-center justify-between py-4 md:py-8">
                                 
-                                <h1 class="text-[30px] font-bold">Directory</h1>
+                                <NuxtLink to="/">
+                                    <h1 class="text-[30px] font-bold">Directory</h1>
+                                </NuxtLink>
                                 
                                 <div class="ml-8 hidden flex-col gap-2.5 sm:flex-row sm:justify-center lg:flex lg:justify-start">
                                     <CategoryForm />
