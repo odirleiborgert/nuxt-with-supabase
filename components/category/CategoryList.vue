@@ -1,14 +1,19 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
 import { categoriesStore } from '~/composables/useCategories'
 import { tecnologiesStore } from '~/composables/useTecnologies'
 
 const { loading, categories, openForm, fetchCategories, deleteCategory } = categoriesStore
 const { categoryName } = tecnologiesStore
 const filter = useTecnologyFilter()
+const router = useRouter()
 
-function filterTecnologies(categoryId: number, categoryNameString: string) {
+function _filterTecnologies(categoryId: number, categoryNameString: string) {
     categoryName.value = categoryNameString
     filter.value = categoryId
+}
+function filterTecnologies(categoryId: number, categoryNameString: string) {
+    router.push({ path: `/category/${categoryId}`, query: { name: categoryNameString } })
 }
 
 onMounted(async () => {

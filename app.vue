@@ -33,7 +33,7 @@
                 </div>
                 
                 <div class="col-span-9">
-                    <TecnologyList />
+                    <NuxtPage />
                 </div>
                 
                 <div class="col-span-12 my-3 text-[12px]">
