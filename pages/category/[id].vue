@@ -3,7 +3,7 @@ import { useRoute } from 'vue-router'
 import { tecnologiesStore } from '~/composables/useTecnologies'
 
 const route = useRoute()
-const { tecnologies, fetchTecnologies, loading } = tecnologiesStore
+const { tecnologies, fetchTecnologies, deleteTecnology, loading } = tecnologiesStore
 
 const categoryId = Number(route.params.id)
 const categoryName = route.query.name as string || ''
